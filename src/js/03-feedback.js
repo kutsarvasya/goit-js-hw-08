@@ -4,7 +4,7 @@ const formEl = document.querySelector('.feedback-form')
 
 populateForm()
 
-const formData = {
+let formData = {
   email: formEl.elements.email.value,
   message: formEl.elements.message.value
 }
@@ -13,10 +13,12 @@ formEl.addEventListener('input', throttle(onTextInput, 500))
 formEl.addEventListener('submit', onFormSubmit)
 
 function onFormSubmit(e) {
-    e.preventDefault()
-    e.target.reset()
-    localStorage.removeItem('feedback-form-state')
-    console.log(formData); 
+  e.preventDefault()
+  e.target.reset()
+  localStorage.removeItem('feedback-form-state')
+  console.log(formData); 
+  formData.email=formEl.elements.email.value,
+  formData.message=formEl.elements.message.value
 }
 
 function populateForm() {
